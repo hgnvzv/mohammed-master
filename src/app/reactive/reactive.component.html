@@ -1,0 +1,100 @@
+<div class="container-fluid" style="padding: 30px;">
+  <div class="row justify-content-center align-items-center" style="height: 80vh;">
+    <div class="col-6">
+      <div class="card p-5">
+        <form [formGroup]="form">
+          <h2 style="color: #e02053;">Reactive Form</h2>
+          <button class="btn btn-primary" (click)="openLargePopup()">Open Large Popup</button>
+          <div class="form-group">
+            <label for="UserName">User Name</label>
+            <input formControlName="UserName" type="text" class="form-control" >
+            <div *ngIf="getValue('UserName')?.touched&& getValue('UserName')?.invalid" class="alert alert-danger">
+              <div *ngIf="getValue('UserName')?.hasError('required')">User Name is required.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="input-group">
+              <input formControlName="password" [type]="hidePassword ? 'password' : 'text'" class="form-control">
+              <button type="button" class="btn btn-secondary" (click)="togglePasswordVisibility()">
+                <i class="bi bi-eye{{ hidePassword ? '-slash' : '' }}"></i>
+              </button>
+            
+            </div>
+            <div *ngIf="getValue('password')?.touched && getValue('password')?.invalid" class="alert alert-danger">
+              <div *ngIf="getValue('password')?.hasError('required')">Password is required.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="Email">Email</label>
+            <input formControlName="Email" type="email" class="form-control">
+            <div *ngIf="getValue('Email')?.touched && getValue('Email')?.invalid" class="alert alert-danger">
+              <div *ngIf="getValue('Email')?.hasError('required')">Email is required.</div>
+              <div *ngIf="getValue('Email')?.hasError('email')">Invalid email format.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Write your Notes</label>
+            <textarea formControlName="textarea" class="form-control" rows="3"></textarea>
+            <div *ngIf="getValue('textarea')?.touched && getValue('textarea')?.invalid" class="alert alert-danger">
+              <div *ngIf="getValue('textarea')?.hasError('required')">Your notes are important to us.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="choos">Your Evaluation of Form</label>
+            <select class="form-select" formControlName="choos">
+              <option value="1">Excellent</option>
+              <option value="2">Good</option>
+              <option value="3">Bad</option>
+            </select>
+            <div *ngIf="getValue('choos')?.touched && getValue('choos')?.invalid" class="alert alert-danger">
+              <div *ngIf="getValue('choos')?.hasError('required')">Must choose a level.</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Your gender</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="gender" id="r1">
+              <label class="form-check-label" for="r1">Male</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="gender" id="r2" checked>
+              <label class="form-check-label" for="r2">Female</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="t1" class="form-label">Satisfaction level</label>
+            <input type="range" class="form-range" id="t1" formControlName="rating" min="0" max="10" step=1>
+            <div *ngIf="getValue('rating')?.touched && getValue('rating')?.invalid" class="alert alert-danger">
+              <div *ngIf="getValue('rating')?.hasError('required')">Your notes are important to us.</div>
+              <div *ngIf="getValue('rating')?.hasError('min')">Hallo</div>
+            </div>
+          </div>
+          <button type="reset" class="btn btn-danger" (click)="resrtdata()">Reset</button>
+          <button type="button" class="btn btn-primary" (click)="getdata()">show data</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #largePopup let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Large Popup</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="closeLargePopup()"></button>
+  </div>
+  <div class="modal-body">
+    <p>Welcome again!</p>
+    <button class="btn btn-primary" (click)="openSmallPopup()">Click on</button>
+  </div>
+</ng-template>
+
+<ng-template #smallPopup let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Small Popup</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="closeSmallPopup()"></button>
+  </div>
+  <div class="modal-body">
+    <p>Welcome again!</p>
+    <button class="btn btn-primary" (click)="closeLargePopup()">closs the large popup</button>
+  </div>
+</ng-template>

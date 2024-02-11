@@ -1,0 +1,108 @@
+
+  <div class="container-fluid" style="padding: 30px;">
+    <div class="row justify-content-center align-items-center" style="height: 80vh;">
+      <div class="col-6">
+        <div class="card p-5">  
+          <form [formGroup]="form">
+            <h2 style="color: #6020e0;">Reactive Form with Bulider form</h2>
+            
+            <button (click)="openPopup(content)"  class="btn btn-primary">Open Popup</button>
+             
+
+            <div class="form-group">
+              <label for="UserName">User Name</label>
+              <input formControlName="UserName" type="text" class="form-control">
+              <div *ngIf="getFormControlValue('UserName') && getFormControlValue('UserName')?.touched && getFormControlValue('UserName')?.invalid" class="alert alert-danger">
+                <div *ngIf="getFormControlValue('UserName')?.hasError('required')">User Name is required.</div>
+                <div *ngIf="getFormControlValue('UserName')?.hasError('pattern')">Please use only letters (a-z, A-Z) and underscore (_) characters.</div>
+              </div>
+                            
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <div class="input-group">
+                <input formControlName="password" [type]="hidePassword ? 'password' : 'text'" class="form-control">
+                <button type="button" class="btn btn-secondary" (click)="togglePasswordVisibility()">
+                  <i class="bi bi-eye{{ hidePassword ? '-slash' : '' }}"></i>
+                </button>
+              
+              </div>
+              <div *ngIf="getFormControlValue('password')?.touched && getFormControlValue('password')?.invalid" class="alert alert-danger">
+                <div *ngIf="getFormControlValue('password')?.hasError('required')">Password is required.</div>
+              </div>
+              
+            </div>
+            <div class="form-group">
+              <label for="Email">Email</label>
+              <input formControlName="Email" type="email" class="form-control">
+              <div *ngIf="getFormControlValue('Email')?.touched && getFormControlValue('Email')?.invalid" class="alert alert-danger">
+                <div *ngIf="getFormControlValue('Email')?.hasError('required')">Email is required.</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Write your Notes</label>
+              <textarea formControlName="textarea" class="form-control" rows="3"></textarea>
+              <div *ngIf="getFormControlValue('textarea')?.touched && getFormControlValue('textarea')?.invalid" class="alert alert-danger">
+                <div *ngIf="getFormControlValue('textarea')?.hasError('required')">textarea is required.</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="choos">Your Evaluation of Form</label>
+              <select class="form-select" formControlName="choos">
+                <option value="1">Excellent</option>
+                <option value="2">Good</option>
+                <option value="3">Bad</option>
+              </select>
+              <div *ngIf="getFormControlValue('choos')?.touched && getFormControlValue('choos')?.invalid" class="alert alert-danger">
+                <div *ngIf="getFormControlValue('choos')?.hasError('required')">must be choos one.</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Your gender</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gender" id="r1">
+                <label class="form-check-label" for="r1">Male</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gender" id="r2" checked>
+                <label class="form-check-label" for="r2">Female</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="t1" class="form-label">Satisfaction level</label>
+              <input type="range" class="form-range" id="t1" formControlName="rating">
+              <div class="mt-2">{{ getRatingMessage() }}</div>
+            </div>
+            <button type="submit" class="btn btn-primary" (click)="save()">Submit</button>
+            <button type="button" class="btn btn-danger " (click)="show()">Show</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+ 
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <form class="row row-cols-sm-auto">
+        <div class="form-group">
+          <label for="dob">Date of Birth:</label>
+          <input type="date" class="form-control" id="dob" name="dob" [(ngModel)]="selectedDateOfBirth" (ngModelChange)="calculateAge()">
+        </div>
+        <div class="form-group">
+          <label for="age">Age:</label>
+          <label id="age">{{ currentAge }}</label>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="close()">close</button>
+    </div>
+  </ng-template>
+
+  
+  
