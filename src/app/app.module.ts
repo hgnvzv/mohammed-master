@@ -6,8 +6,6 @@ import { Form1Component } from './form1/form1.component';
 import { ReactiveFormsModule,FormControl,FormGroup, FormsModule } from '@angular/forms';
 import { ReactiveComponent } from './reactive/reactive.component';
 import { HeaderComponent } from './header/header.component';
-import { RouterLink } from '@angular/router';
-import { OneComponent } from './one/one.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -18,7 +16,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     Form1Component,
     ReactiveComponent,
     HeaderComponent,
-    OneComponent,
     
   ],
   imports: [
