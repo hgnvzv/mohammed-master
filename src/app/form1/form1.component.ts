@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-form1',
@@ -9,11 +10,11 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class Form1Component {
   @ViewChild('popupContent') popupContent: any;
-  selectedDateOfBirth: string = '';
+  salect: string = '';
   currentAge: number | null = null;
   calculateAge() {
     const today = new Date();
-    const birthDate = new Date(this.selectedDateOfBirth);
+    const birthDate = new Date(this.salect);
     let age = today.getFullYear() - birthDate.getFullYear();
     const month = today.getMonth() - birthDate.getMonth();
 
@@ -35,7 +36,7 @@ export class Form1Component {
   popupForm: FormGroup;
   hidePassword: boolean = true;
 
-  constructor(private fb: FormBuilder, private modalService: NgbModal) {
+  constructor(private fb: FormBuilder, private modalService: NgbModal , private toster: ToastrService)  {
     this.popupForm = this.fb.group({
       UserName: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
       password: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
@@ -61,7 +62,10 @@ export class Form1Component {
     if (this.popupForm.valid) {
       this.userData = { ...this.popupForm.value };
       this.modalService.dismissAll();
+      this.toster.success('saved');
     }
+
+    
   }
 
   togglePasswordVisibility() {

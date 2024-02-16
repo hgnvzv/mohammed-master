@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { NgbCalendar, NgbDateStruct, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-reactive',
@@ -11,27 +11,28 @@ export class ReactiveComponent {
   data = { username: "mohammed", password: 123, Email: 'mohammed@gmail.com', textarea: 'abc', choos: 2, rating: 50 }
   form: FormGroup = new FormGroup({});
   hidePassword: boolean = true;
-  @ViewChild('largePopup') largePopup: any;
-  @ViewChild('smallPopup') smallPopup: any;
-  largeModalRef: any;
+  @ViewChild('largePopup') L: any;
+  @ViewChild('smallPopup') S: any;
+  LM: any;
+  SM:any;
   constructor(private modalService: NgbModal) {
     this.buildForm(this.data);
   }
 
   openLargePopup() {
-    this.largeModalRef = this.modalService.open(this.largePopup, { size: 'lg' });
+    this.LM= this.modalService.open(this.L, { size: 'lg' });
   }
 
   closeLargePopup() {
-    this.largeModalRef.close();
+    this.LM.close();
   }
 
   openSmallPopup() {
-    this.modalService.open(this.smallPopup);
+   this.SM= this.modalService.open(this.S);
   }
 
   closeSmallPopup() {
-    this.modalService.dismissAll();
+    this.SM.close();
   }
 
   togglePasswordVisibility() {

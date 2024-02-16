@@ -8,6 +8,7 @@ import { ReactiveComponent } from './reactive/reactive.component';
 import { HeaderComponent } from './header/header.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToastrModule } from 'ngx-toastr'
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     FormsModule,
     NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
-    NgbModule
+    NgbModule,
+    ToastrModule.forRoot()
 
     
     
