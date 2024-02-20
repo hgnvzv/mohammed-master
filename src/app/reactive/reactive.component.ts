@@ -11,32 +11,35 @@ export class ReactiveComponent {
   data = { username: "mohammed", password: 123, Email: 'mohammed@gmail.com', textarea: 'abc', choos: 2, rating: 50 }
   form: FormGroup = new FormGroup({});
   hidePassword: boolean = true;
-  @ViewChild('largePopup') L: any;
-  @ViewChild('smallPopup') S: any;
-  LM: any;
-  SM:any;
+  @ViewChild('largePopup') largePopup: any;
+  @ViewChild('smallPopup') smallPopup: any;
+  LargeModule: any;
+  SmallModule:any;
   constructor(private modalService: NgbModal) {
     this.buildForm(this.data);
   }
 
   openLargePopup() {
-    this.LM= this.modalService.open(this.L, { size: 'lg' });
+    this.LargeModule= this.modalService.open(this.largePopup, { size: 'lg' });
   }
 
   closeLargePopup() {
-    this.LM.close();
+    this.LargeModule.close();
   }
 
   openSmallPopup() {
-   this.SM= this.modalService.open(this.S);
+   this.SmallModule= this.modalService.open(this.smallPopup);
   }
 
   closeSmallPopup() {
-    this.SM.close();
+    this.SmallModule.close();
   }
 
   togglePasswordVisibility() {
     this.hidePassword = !this.hidePassword;
+}
+closeall(){
+  this.modalService.dismissAll();
 }
 
   getdata(){

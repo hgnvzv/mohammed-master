@@ -84,7 +84,8 @@
   </div>
   <div class="modal-body">
     <p>Welcome ('_')</p>
-    <button class="btn btn-primary" (click)="openSmallPopup()">Click on</button>
+    <button class="btn btn-primary me-4" (click)="openSmallPopup()">Open the small module</button>
+    <button class="btn btn-primary" (click)="closeLargePopup()">Close</button>
   </div>
 </ng-template>
 
@@ -95,6 +96,8 @@
   </div>
   <div class="modal-body">
     <p>Welcome again!</p>
-    <button class="btn btn-primary" (click)="closeLargePopup()">closs the large popup</button>
+    <button class="btn btn-primary me-2 " (click)="closeLargePopup()">closs the large popup</button>
+    <button class="btn btn-primary me-2" (click)="closeSmallPopup()">closs the small popup</button>
+    <button class="btn btn-primary " (click)="closeall()">closs all</button>
   </div>
 </ng-template>

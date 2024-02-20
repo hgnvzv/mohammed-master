@@ -6,9 +6,9 @@
         <button (click)="openPopup()" class="btn btn-primary mb-3">Edit Information</button>
         <button (click)="openPopupo(content)"  class="btn btn-primary">Calculate your Age</button>
         <div class="col-md-12 my-3">
-          <label for="selectimage" class="btn btn-primary">select image</label>
-          <span>{{filename}}</span>
-          <input type="file"  id="selectimage" hidden class="form-control" (change)="selectimage($event)" >
+          <label for="selectimage" class="btn btn-primary">Select Image</label>
+          <input type="file" id="selectimage" hidden class="form-control" (change)="selectimage($event)">
+          <img [src]="filename" alt="Selected Image" *ngIf="filename" class="my-3 square-image">
         </div>
         
         <table class="table table-striped">
@@ -25,7 +25,7 @@
             </tr>
             <tr>
               <td>Password</td>
-              <td>{{ hidePassword ? '*****' : userData.password }}</td>
+              <td>{{ hidePassword ? '********' : userData.password }}</td>
             </tr>
             <tr>
               <td>Email</td>
@@ -76,8 +76,9 @@
         <div *ngIf="popupForm.get('password')?.invalid &&  popupForm.get('password')?.touched" class="text-danger">
           <div *ngIf="popupForm.get('password')?.hasError('required')">Password is required.</div>
           <div *ngIf="popupForm.get('password')?.hasError('pattern')">Please use only numbers (0-9).</div>
+          <div *ngIf="popupForm.get('password')?.hasError('minlength')">Password must be at least 8 characters long.</div>
         </div>
-      </div>
+      </div>      
       <div class="mb-3">
         <label for="Email" class="form-label">Email:</label>
         <input formControlName="Email" type="email" class="form-control">

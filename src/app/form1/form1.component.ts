@@ -14,10 +14,18 @@ export class Form1Component {
   currentAge: number | null = null;
   filename=''
 
-  selectimage(event:any){
-    this.filename = event.target.value
-    this.popupForm .get('image')?.setValue(event.target.file[0])
+  selectimage(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.filename = reader.result as string;
+        this.popupForm.get('image')?.setValue(file);
+      };
+      reader.readAsDataURL(file);
+    }
   }
+  
   calculateAge() {
     const today = new Date();
     const birthDate = new Date(this.salect);
@@ -46,7 +54,7 @@ export class Form1Component {
   constructor(private fb: FormBuilder, private modalService: NgbModal , private toster: ToastrService)  {
     this.popupForm = this.fb.group({
       UserName: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
-      password: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+      password: ['', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(8)]],
       Email: ['', [Validators.required, Validators.email]],
       textarea: ['', Validators.required],
       gender: ['', Validators.required],

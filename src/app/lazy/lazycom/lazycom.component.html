@@ -1,34 +1,47 @@
-<div class="contener-fluid" style="padding: 30px;">
-    <div class="row justify-content-center aligen-item-center" style="height: 80vh;">
-        <div class="col-8">
-            <div class="card p-5">
-                <h2 style="color: blueviolet;"> form lazy lodding</h2>
-                <button class="btn btn-primary mb-3">open</button>
-
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">Field</th>
-                            <th scope="col">value</th>
-                        </tr>
-                    </thead>
-                    <body>
-                        <tr>
-                            <th>user name</th>
-                            <th></th>
-                        </tr>
-                        <tr>
-                            <th>password</th>
-                            <th></th>
-                        </tr>
-                    </body>
-                </table>
-            </div>
+<div class="container mt-5">
+    <table class="table table-bordered table-hover">
+      <thead class="table-danger">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Full Name</th>
+          <th scope="col">Job Number</th>
+          <th scope="col">Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees" (click)="showDetails(employee)">
+          <td>{{ employee.id }}</td>
+          <td>{{ employee.fullName }}</td>
+          <td>{{ employee.jobNumber }}</td>
+          <td><button class="btn btn-primary">Details</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <!-- Modal -->
+  <div id="myModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{ selectedEmployee?.fullName }} Details</h5>
+          <button type="button" class="btn-close" aria-label="Close"  (click)="closeModal()">
+            
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <div class="modal-body">
+          <p><strong>Full Name:</strong> {{ selectedEmployee?.fullName }}</p>
+          <p><strong>Mother's Name:</strong> {{ selectedEmployee?.motherName }}</p>
+          <p><strong>Date of Employment:</strong> {{ selectedEmployee?.dateOfEmployment }}</p>
+          <p><strong>Age:</strong> {{ selectedEmployee?.age }}</p>
+          <p><strong>Gender:</strong> {{ selectedEmployee?.gender }}</p>
+          <p><strong>Residence:</strong> {{ selectedEmployee?.residence }}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger" (click)="closeModal()">Close</button>
+        </div>
+      </div>
     </div>
-</div>
-
-<ng-template #popupContent let-modal>
-    
-
-</ng-template>
+  </div>
+  
