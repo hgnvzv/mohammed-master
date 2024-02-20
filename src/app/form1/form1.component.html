@@ -5,6 +5,11 @@
         <h2 style="color: #6020e0;">Main Interface</h2>
         <button (click)="openPopup()" class="btn btn-primary mb-3">Edit Information</button>
         <button (click)="openPopupo(content)"  class="btn btn-primary">Calculate your Age</button>
+        <div class="col-md-12 my-3">
+          <label for="selectimage" class="btn btn-primary">select image</label>
+          <span>{{filename}}</span>
+          <input type="file"  id="selectimage" hidden class="form-control" (change)="selectimage($event)" >
+        </div>
         
         <table class="table table-striped">
           <thead>

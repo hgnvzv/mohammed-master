@@ -12,6 +12,12 @@ export class Form1Component {
   @ViewChild('popupContent') popupContent: any;
   salect: string = '';
   currentAge: number | null = null;
+  filename=''
+
+  selectimage(event:any){
+    this.filename = event.target.value
+    this.popupForm .get('image')?.setValue(event.target.file[0])
+  }
   calculateAge() {
     const today = new Date();
     const birthDate = new Date(this.salect);
@@ -30,7 +36,8 @@ export class Form1Component {
     Email: '',
     textarea: '',
     gender: '',
-    rating: ''
+    rating: '',
+    image:''
   };
 
   popupForm: FormGroup;
@@ -43,7 +50,8 @@ export class Form1Component {
       Email: ['', [Validators.required, Validators.email]],
       textarea: ['', Validators.required],
       gender: ['', Validators.required],
-      rating: ['', Validators.required]
+      rating: ['', Validators.required],
+      image: ['', Validators.required]
     });
   }
 
@@ -59,11 +67,11 @@ export class Form1Component {
   
 
   savePopup() {
-    if (this.popupForm.valid) {
+    
       this.userData = { ...this.popupForm.value };
       this.modalService.dismissAll();
       this.toster.success('saved');
-    }
+    
 
     
   }

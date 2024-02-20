@@ -9,6 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr'
+import { LazyModule } from './lazy/lazy.module';
 
 
 @NgModule({
@@ -26,7 +27,9 @@ import { ToastrModule } from 'ngx-toastr'
     FormsModule,
     NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
     NgbModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    LazyModule
+    
 
     
     
