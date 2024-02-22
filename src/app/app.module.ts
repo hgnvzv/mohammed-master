@@ -2,14 +2,15 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { Form1Component } from './form1/form1.component';
+import { Form1Component } from './form/form1/form1.component';
 import { ReactiveFormsModule,FormControl,FormGroup, FormsModule } from '@angular/forms';
-import { ReactiveComponent } from './reactive/reactive.component';
+import { ReactiveComponent } from './reactive-form/reactive/reactive.component';
 import { HeaderComponent } from './header/header.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr'
 import { LazyModule } from './lazy/lazy.module';
+import { FormModule } from './form/form.module';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { LazyModule } from './lazy/lazy.module';
     NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
     NgbModule,
     ToastrModule.forRoot(),
-    LazyModule
+    LazyModule,
+    FormModule
     
 
     
