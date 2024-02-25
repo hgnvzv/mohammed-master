@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { LazyRoutingModule } from './lazy-routing.module';
 import { LazycomComponent } from './lazycom/lazycom.component';
 

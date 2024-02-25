@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ReactiveComponent } from './reactive/reactive.component';
 
 const routes: Routes = [
-  {path:'',component:ReactiveComponent}
+  {path:'reactivecomponent',component:ReactiveComponent}
 ];
 
 @NgModule({
