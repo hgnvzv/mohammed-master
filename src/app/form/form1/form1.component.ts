@@ -1,5 +1,6 @@
+import { group } from '@angular/animations';
 import { Component, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 
@@ -59,9 +60,9 @@ export class Form1Component {
       textarea: ['', Validators.required],
       gender: ['', Validators.required],
       rating: ['', Validators.required],
-      image: ['', Validators.required]
     });
   }
+
 
   openPopup() {
     const modalRef = this.modalService.open(this.popupContent);

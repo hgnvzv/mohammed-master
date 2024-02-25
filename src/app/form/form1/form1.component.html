@@ -78,7 +78,7 @@
           <div *ngIf="popupForm.get('password')?.hasError('pattern')">Please use only numbers (0-9).</div>
           <div *ngIf="popupForm.get('password')?.hasError('minlength')">Password must be at least 8 characters long.</div>
         </div>
-      </div>      
+      </div>
       <div class="mb-3">
         <label for="Email" class="form-label">Email:</label>
         <input formControlName="Email" type="email" class="form-control">
@@ -124,7 +124,8 @@
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="savePopup()">Save</button>
+    <button type="button" class="btn btn-danger"  (click)="close()">Close</button>
+    <button type="button" class="btn btn-primary" [disabled]="popupForm.invalid" (click)="savePopup()">Save</button>
   </div>
 </ng-template>
 
