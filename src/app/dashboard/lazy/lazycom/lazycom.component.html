@@ -1,20 +1,20 @@
 <div class="container mt-5">
   <button class="btn btn-danger" [routerLink]="['/reactivesecation/reactivecomponent']"> reactive</button>
   <table class="table table-bordered table-hover">
-    <thead class="table-danger">
+    <thead class="table-danger ">
       <tr>
-        <th>ID</th>
-        <th>Full Name</th>
-        <th>Job Number</th>
-        <th>Details</th>
+        <th class="text-center">ID</th>
+        <th class="text-center">Full Name</th>
+        <th class="text-center">Job Number</th>
+        <th class="text-center">Details</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let employee of employees">
-        <td>{{ employee.id }}</td>
+        <td class="text-center">{{ employee.id }}</td>
         <td>{{ employee.fullName }}</td>
         <td>{{ employee.jobNumber }}</td>
-        <td><button class="btn btn-primary" (click)="showDetails(employee)" >Details</button></td>
+        <td class="text-center"><button class="btn btn-primary" (click)="showDetails(employee)" >Details</button></td>
       </tr>
     </tbody>
   </table>

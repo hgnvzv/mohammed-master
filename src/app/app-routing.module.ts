@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { Form1Component } from './form/form1/form1.component';
+import { LoginModule } from './Auth/login.module';
 
 const routes: Routes = [
-  
-  { path: 'form1', loadChildren: () => import('./form/form.module').then(m => m.FormModule) },
-  { path: 'reactivesecation', loadChildren: () => import('./reactive-form/reactive-form.module').then(m => m.ReactiveFormModule) },
-  { path: 'lazy', loadChildren: () => import('./lazy/lazy.module').then(m => m.LazyModule) },
-  { path:'**',redirectTo:'form1',pathMatch:'full'}
+  { path:  'login',loadChildren:() => import('./Auth/login.module').then(m => m.LoginModule)},
+  { path:'',redirectTo:'login',pathMatch:'full'},
+  { path:  '',loadChildren:() => import('./dashboard/dashboard.module').then(m => m.DashboardModule)},
+
 ];
 
 @NgModule({
