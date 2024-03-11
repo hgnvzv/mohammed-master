@@ -12,6 +12,7 @@ export class LoginComponent {
   loginForm: FormGroup;
   submitted = false;
   invalidLogin = false;
+  hidePassword: boolean = true;
   users = [{ 'email': 'mohammed@gmail.com', 'password': '12345678' }];
 
   constructor(
@@ -24,21 +25,23 @@ export class LoginComponent {
       password: ['', [Validators.required, Validators.minLength(8)]]
     });
   }
+ Password() {
+    this.hidePassword = !this.hidePassword;
+  }
 
   onSubmit() {
     this.submitted = true;
     if (this.loginForm.invalid) {
       return;
     }
-
+  
     const email = this.loginForm.value['email'];
     const password = this.loginForm.value['password'];
-
     const user = this.users.find(u => u['email'] === email && u['password'] === password);
     if (user) {
       this.invalidLogin = false;
       this.toastr.success('Login successful');
-      this.router.navigateByUrl('/form1');
+      this.router.navigateByUrl('/form1secation/form1component');
     } else {
       this.invalidLogin = true;
       this.toastr.error('Invalid email or password');

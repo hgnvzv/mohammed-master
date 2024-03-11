@@ -54,7 +54,7 @@ export class Form1Component {
 
   constructor(private fb: FormBuilder, private modalService: NgbModal , private toster: ToastrService)  {
     this.popupForm = this.fb.group({
-      UserName: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+$')]],
+      UserName: ['', [Validators.required, Validators.pattern('^[a-z A-Z]+$')]],
       password: ['', [Validators.required, Validators.pattern('^[0-9]+$'), Validators.minLength(8)]],
       Email: ['', [Validators.required, Validators.email]],
       textarea: ['', Validators.required],

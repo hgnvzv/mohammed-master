@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LazycomComponent } from './lazycom/lazycom.component';
 
 const routes: Routes = [
-  {path:'',component:LazycomComponent},
+  {path:'lazycomponent',component:LazycomComponent},
 ];
 
 @NgModule({

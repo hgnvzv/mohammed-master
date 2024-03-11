@@ -6,9 +6,9 @@ const routes: Routes = [
   {path:'',
   component:LayoutComponent,
    children:[
-  { path: 'form1', loadChildren: () => import('./form/form.module').then(m => m.FormModule) },
+  { path: 'form1secation', loadChildren: () => import('./form/form.module').then(m => m.FormModule) },
   { path: 'reactivesecation', loadChildren: () => import('./reactive-form/reactive-form.module').then(m => m.ReactiveFormModule) },
-  { path: 'lazy', loadChildren: () => import('./lazy/lazy.module').then(m => m.LazyModule) },
+  { path: 'lazysecation', loadChildren: () => import('./lazy/lazy.module').then(m => m.LazyModule) },
     
    ]},
   
