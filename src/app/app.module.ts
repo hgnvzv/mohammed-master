@@ -8,12 +8,16 @@ import { ToastrModule } from 'ngx-toastr'
 import { LoginModule } from './Auth/login.module';
 import { LoginComponent } from './Auth/login/login.component';
 import { RouterModule } from '@angular/router';
+import { NavparComponent } from './navpar/navpar.component';
+import { LayoutComponent } from './layout/layout.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    NavparComponent,
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
